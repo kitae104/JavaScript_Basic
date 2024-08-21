@@ -3,15 +3,24 @@
 //=====================================
 'use strict';
 
-const liFirst = document.querySelector('li');
-console.log(liFirst.parentNode); // ul
-console.log(liFirst.parentElement); // ul
+// 1. DOM 탐색 프로퍼티
+const ul = document.body.firstElementChild.nextElementSibling; 
+const firstLi = ul.firstElementChild;
+console.log(firstLi);
 
-console.log(liFirst.closest('body')); // body
-console.log(liFirst.closest('header')); // ul
+// 2. querySelector() 메소드
+const section = document.querySelector('section');
+section.className = 'red-bg';
 
-const ul = liFirst.parentElement;
-console.log(ul); // ul 
+const button = document.querySelector('button');
+button.addEventListener('click', () => {
+  // if(section.className === 'red-bg visible') {
+  //   section.className = 'red-bg invisible';
+  // } else {
+  //   section.className = 'red-bg visible';
+  // }
+  
+  // section.classList.toggle('visible');
+  section.classList.toggle('invisible');
 
-console.log(ul.previousElementSibling); // header 
-console.log(ul.nextElementSibling); // input 
+});
