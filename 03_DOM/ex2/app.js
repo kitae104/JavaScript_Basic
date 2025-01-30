@@ -27,8 +27,17 @@ div.insertAdjacentHTML('beforeend', '<p>insertAdjacentHTML text</p>');
 const p = div.querySelector('p')
 p.style.backgroundColor = 'yellow';
 
-// 새로운 요소 추가 
-const newLi = document.createElement('li');
+const newLi = document.createElement('li'); // 새로운 요소 추가 
 newLi.textContent = 'Item 4';
 
-list.appendChild(newLi);
+list.lastElementChild.before(newLi);  // 마지막 요소 앞에 새로운 요소 추가 
+
+list.firstElementChild.replaceWith(newLi);  // 첫번째 요소를 새로운 요소로 교체
+
+list.append(newLi);  // 마지막 요소로 추가
+
+const secondLi = list.children[1];
+secondLi.textContent = 'test';  // 두번째 요소의 텍스트 변경
+
+const newLi2 = newLi.cloneNode(true);  // 복제
+list.append(newLi, newLi2);
