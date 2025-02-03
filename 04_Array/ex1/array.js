@@ -1,23 +1,28 @@
-// push, pop, shift, unshift - 배열의 끝과 앞에 요소를 추가하거나 제거하는 방법
-const hobbies = ['Sports', 'Cooking'];
-hobbies.push('Reading'); // 맨 뒤에 추가
-hobbies.unshift('Coding'); // 맨 앞에 추가
-console.log(hobbies); // ['Coding', 'Sports', 'Cooking', 'Reading']
+// indexOf() 메서드는 배열에서 지정된 요소를 찾을 수 있는 첫 번째 인덱스를 반환하고 존재하지 않으면 -1을 반환합니다.
+const indexOfData = [1, 5.3, 1.5, 10.99, 1.5, -5, 10];
+console.log(indexOfData.indexOf(1.5)); // 2
 
-const poppedValue = hobbies.pop(); // 맨 뒤에 요소 제거
-hobbies.shift(); // 맨 앞에 요소 제거
-console.log(hobbies); // ['Sports', 'Cooking']
+// lastIndexOf() 메서드는 배열에서 지정된 요소를 찾을 수 있는 마지막 인덱스를 반환하고 존재하지 않으면 -1을 반환합니다.
+console.log(indexOfData.lastIndexOf(1.5)); // 4
 
-hobbies[1] = 'Coding'; // 특정 위치의 요소 변경
-hobbies[5] = 'Reading'; // 배열 길이를 늘리면서 요소 추가
-console.log(hobbies); // ['Sports', 'Coding', empty, empty, empty, 'Reading']
+const personData = [{ name: 'Max' }, { name: 'Manuel' }];
+console.log(personData.indexOf({ name: 'Manuel' })); // -1 : 객체는 찾을 수 없음
 
-// splice - 배열의 특정 위치에 요소를 추가하거나 제거하는 방법
-hobbies.splice(1, 0, 'Good Food'); // 1번 인덱스에 요소 추가
-console.log(hobbies); // ['Sports', 'Good Food', 'Coding', empty, empty, empty, 'Reading']
+// find() 메서드는 주어진 판별 함수를 만족하는 첫 번째 요소의 값을 반환합니다. 그런 요소가 없다면 undefined를 반환합니다.
+const manuel = personData.find((person, idx, persons) => {
+  return person.name === 'Manuel';
+});
+console.log(manuel); // { name: 'Manuel' }
 
-hobbies.splice(0, 1); // 0번 인덱스부터 1개의 요소 제거
-console.log(hobbies); // ['Good Food', 'Coding', empty, empty, empty, 'Reading']
+manuel.name = 'Anna'; // 객체의 속성 변경
+console.log(manuel, personData); // { name: 'Anna' } [ { name: 'Max' }, { name: 'Anna' } ]
 
-const removedHobby = hobbies.splice(-1, 1); // 맨 뒤에서 1개의 요소 제거
-console.log(hobbies); // ['Good Food', 'Coding', empty, empty, empty]
+// findIndex() 메서드는 주어진 판별 함수를 만족하는 배열의 첫 번째 요소에 대한 인덱스를 반환합니다. 그런 요소가 없다면 -1을 반환합니다.
+const maxIndex = personData.findIndex((person, idx, persons) => {
+  return person.name === 'Max';
+});
+console.log(maxIndex); // 0
+
+// includes() 메서드는 배열이 특정 요소를 포함하고 있는지 판별합니다.
+console.log(indexOfData.includes(1.5)); // true
+console.log(indexOfData.includes(10.5, 2)); // false : 2번 인덱스부터 찾기
