@@ -1,4 +1,4 @@
-// splite() : 문자열을 구분자로 나누어 배열로 반환
+// split() : 문자열을 구분자로 나누어 배열로 반환
 const data = 'new york;10.99;2000';
 
 const transformedData = data.split(';'); // 구분자 ; 로 나누어 배열로 반환
